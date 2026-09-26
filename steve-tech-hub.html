@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Steve Tech Hub | Digital Gadgets by STEVE MUGI</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #f5f7fb;
+    color: #172033;
+}
+
+/* HEADER */
+header {
+    background: #101828;
+    color: white;
+    padding: 18px 6%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.logo span {
+    color: #4f9cff;
+}
+
+nav {
+    display: flex;
+    gap: 20px;
+    flex: 1;
+    margin-left: 40px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    color: #4f9cff;
+}
+
+.header-right {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.cart-button {
+    background: #4f9cff;
+    border: none;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    position: relative;
+}
+
+.cart-count {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background: #ff4444;
+    color: white;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+}
+
+/* HERO */
+.hero {
+    min-height: 430px;
+    padding: 80px 6%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(135deg, #0f172a, #1d4ed8);
+    color: white;
+    gap: 40px;
+}
+
+.hero-text {
+    max-width: 600px;
+    flex: 1;
+}
+
+.hero h1 {
+    font-size: clamp(40px, 6vw, 70px);
+    margin-bottom: 20px;
+}
+
+.hero-subtitle {
+    font-size: 14px;
+    color: #4f9cff;
+    margin-bottom: 10px;
+}
+
+.hero p {
+    font-size: 19px;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+.hero button {
+    padding: 14px 25px;
+    border: none;
+    border-radius: 8px;
+    background: white;
+    color: #1d4ed8;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.hero button:hover {
+    transform: scale(1.05);
+}
+
+.hero-image {
+    font-size: 80px;
+    text-align: center;
+}
+
+/* SEARCH */
+.search-area {
+    padding: 30px 6%;
+    text-align: center;
+}
+
+#searchInput {
+    width: min(700px, 100%);
+    padding: 15px;
+    border: 1px solid #ccd3df;
+    border-radius: 10px;
+    font-size: 16px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+/* CATEGORIES */
+.categories {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px 6% 30px;
+}
+
+.category-btn {
+    border: none;
+    background: white;
+    padding: 11px 18px;
+    border-radius: 20px;
+    cursor: pointer;
+    box-shadow: 0 2px 8px #0001;
+    transition: 0.3s;
+}
+
+.category-btn.active,
+.category-btn:hover {
+    background: #2563eb;
+    color: white;
+}
+
+/* PRODUCTS */
+.products-section {
+    padding: 20px 6% 70px;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 32px;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 25px;
+}
+
+.product-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px #00000012;
+    transition: 0.25s;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px #00000020;
+}
+
+.product-image {
+    height: 190px;
+    background: #eef3f9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 75px;
+}
+
+.product-info {
+    padding: 18px;
+}
+
+.product-info h3 {
+    margin-bottom: 8px;
+    font-size: 16px;
+}
+
+.category-label {
+    color: #667085;
+    font-size: 13px;
+}
+
+.specs {
+    font-size: 12px;
+    color: #999;
+    margin: 8px 0;
+    line-height: 1.4;
+}
+
+.price {
+    font-size: 21px;
+    font-weight: bold;
+    color: #1769e0;
+    margin: 12px 0;
+}
+
+.add-btn {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background: #101828;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+    font-weight: bold;
+}
+
+.add-btn:hover {
+    background: #2563eb;
+}
+
+/* CART PANEL */
+.cart-panel {
+    position: fixed;
+    right: -420px;
+    top: 0;
+    width: min(400px, 100%);
+    height: 100vh;
+    background: white;
+    z-index: 1000;
+    box-shadow: -5px 0 20px rgba(0,0,0,0.1);
+    overflow-y: auto;
+    transition: 0.3s;
+}
+
+.cart-panel.active {
+    right: 0;
+}
+
+.cart-header {
+    background: #101828;
+    color: white;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.close-cart {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.cart-content {
+    padding: 20px;
+}
+
+.cart-item {
+    display: flex;
+    gap: 15px;
+    padding: 15px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.cart-item-image {
+    font-size: 40px;
+    width: 60px;
+    text-align: center;
+}
+
+.cart-item-details {
+    flex: 1;
+}
+
+.cart-item-name {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.cart-item-price {
+    color: #1769e0;
+    font-weight: bold;
+}
+
+.remove-btn {
+    background: #ff4444;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.cart-total {
+    padding: 20px;
+    border-top: 2px solid #eee;
+    font-size: 20px;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+}
+
+.checkout-btn {
+    width: 90%;
+    margin: 20px auto;
+    padding: 15px;
+    background: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    display: block;
+}
+
+.checkout-btn:hover {
+    background: #1d4ed8;
+}
+
+/* CONTACT SECTION */
+.contact-section {
+    background: #101828;
+    color: white;
+    padding: 50px 6%;
+    display: none;
+}
+
+.contact-section.active {
+    display: block;
+}
+
+.contact-title {
+    font-size: 32px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.contact-item {
+    background: rgba(255,255,255,0.1);
+    padding: 25px;
+    border-radius: 10px;
+}
+
+.contact-label {
+    color: #4f9cff;
+    font-size: 14px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.contact-value {
+    font-size: 18px;
+    word-break: break-all;
+}
+
+.contact-value a {
+    color: #4f9cff;
+    text-decoration: none;
+}
+
+.contact-value a:hover {
+    text-decoration: underline;
+}
+
+/* FOOTER */
+footer {
+    background: #0f0f0f;
+    color: white;
+    text-align: center;
+    padding: 30px 6%;
+    margin-top: 50px;
+}
+
+/* MODAL */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 2000;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal.active {
+    display: flex;
+}
+
+.modal-content {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    max-width: 500px;
+    width: 90%;
+}
+
+.modal-header {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.close-modal {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: Arial, sans-serif;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 12px;
+    background: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.submit-btn:hover {
+    background: #1d4ed8;
+}
+
+@media (max-width: 768px) {
+    .hero {
+        flex-direction: column;
+        padding: 40px 6%;
+    }
+
+    .hero-image {
+        font-size: 60px;
+    }
+
+    nav {
+        display: none;
+    }
+
+    .product-grid {
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    }
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+    <div class="logo">Steve <span>Tech Hub</span></div>
+    <nav>
+        <a onclick="showProducts()">Products</a>
+        <a onclick="showContact()">Contact</a>
+        <a onclick="showAbout()">About</a>
+    </nav>
+    <div class="header-right">
+        <button class="cart-button" onclick="toggleCart()">
+            🛒 Cart
+            <span class="cart-count" id="cart-count">0</span>
+        </button>
+    </div>
+</header>
+
+<!-- HERO SECTION -->
+<section class="hero">
+    <div class="hero-text">
+        <div class="hero-subtitle">Welcome to Steve Tech Hub</div>
+        <h1>Premium Digital Gadgets</h1>
+        <p>Discover the latest laptops, phones, tablets, and accessories at unbeatable prices. Curated by STEVE MUGI for tech enthusiasts.</p>
+        <button onclick="scrollToProducts()">Shop Now</button>
+    </div>
+    <div class="hero-image">📱💻</div>
+</section>
+
+<!-- SEARCH -->
+<div class="search-area">
+    <input type="text" id="searchInput" placeholder="Search for laptops, phones, tablets..." onkeyup="filterProducts()">
+</div>
+
+<!-- CATEGORIES -->
+<div class="categories">
+    <button class="category-btn active" onclick="filterByCategory('all')">All Products</button>
+    <button class="category-btn" onclick="filterByCategory('Laptop')">Laptops</button>
+    <button class="category-btn" onclick="filterByCategory('Phone')">Phones</button>
+    <button class="category-btn" onclick="filterByCategory('Tablet')">Tablets</button>
+    <button class="category-btn" onclick="filterByCategory('Audio')">Audio</button>
+    <button class="category-btn" onclick="filterByCategory('Wearable')">Wearables</button>
+</div>
+
+<!-- PRODUCTS SECTION -->
+<section class="products-section" id="products-section">
+    <h2 class="section-title">Featured Products</h2>
+    <div class="product-grid" id="product-grid">
+    </div>
+</section>
+
+<!-- CONTACT SECTION -->
+<section class="contact-section" id="contact-section">
+    <h2 class="contact-title">Get In Touch</h2>
+    <div class="contact-grid">
+        <div class="contact-item">
+            <div class="contact-label">👤 STORE OWNER</div>
+            <div class="contact-value">STEVE MUGI</div>
+        </div>
+        <div class="contact-item">
+            <div class="contact-label">📞 PHONE</div>
+            <div class="contact-value"><a href="tel:+254101076275">+254 101 076 275</a></div>
+        </div>
+        <div class="contact-item">
+            <div class="contact-label">✉️ EMAIL</div>
+            <div class="contact-value"><a href="mailto:stevodedrummer@gmail.com">stevodedrummer@gmail.com</a></div>
+        </div>
+    </div>
+</section>
+
+<!-- CART PANEL -->
+<div class="cart-panel" id="cart-panel">
+    <div class="cart-header">
+        <h2>Shopping Cart</h2>
+        <button class="close-cart" onclick="toggleCart()">✕</button>
+    </div>
+    <div class="cart-content" id="cart-content">
+        <p>Your cart is empty</p>
+    </div>
+    <div class="cart-total" id="cart-total">
+        <span>Total:</span>
+        <span>$0</span>
+    </div>
+    <button class="checkout-btn" onclick="checkout()">Checkout</button>
+</div>
+
+<!-- CONTACT MODAL -->
+<div class="modal" id="contact-modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <span>Send Message</span>
+            <button class="close-modal" onclick="closeContactModal()">✕</button>
+        </div>
+        <form onsubmit="sendMessage(event)">
+            <div class="form-group">
+                <label>Name</label>
+                <input type="text" required>
+            </div>
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" required>
+            </div>
+            <div class="form-group">
+                <label>Message</label>
+                <textarea required></textarea>
+            </div>
+            <button type="submit" class="submit-btn">Send Message</button>
+        </form>
+    </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+    <p>&copy; 2024 Steve Tech Hub. All rights reserved. | Director: STEVE MUGI</p>
+    <p>📞 +254 101 076 275 | ✉️ stevodedrummer@gmail.com</p>
+</footer>
+
+<script>
+// Products Database
+const products = [
+    { id: 1, name: 'MacBook Pro 16"', category: 'Laptop', price: 2499, emoji: '💻', specs: 'M3 Pro • 16GB RAM • 512GB SSD' },
+    { id: 2, name: 'iPhone 15 Pro Max', category: 'Phone', price: 1199, emoji: '📱', specs: '6.7" Display • A17 Pro • 256GB' },
+    { id: 3, name: 'Dell XPS 15', category: 'Laptop', price: 1899, emoji: '💻', specs: 'Intel i7 • 16GB RAM • RTX 4070' },
+    { id: 4, name: 'Samsung Galaxy S24', category: 'Phone', price: 999, emoji: '📱', specs: '6.2" AMOLED • Snapdragon 8 Gen 3 • 256GB' },
+    { id: 5, name: 'iPad Air', category: 'Tablet', price: 799, emoji: '📱', specs: '11" Display • M1 Chip • 128GB' },
+    { id: 6, name: 'Apple Watch Ultra', category: 'Wearable', price: 799, emoji: '⌚', specs: 'Always-On Display • 36H Battery' },
+    { id: 7, name: 'Google Pixel Buds Pro', category: 'Audio', price: 229, emoji: '🎧', specs: 'Active Noise Cancellation • 8H Battery' },
+    { id: 8, name: 'Sony WH-1000XM5', category: 'Audio', price: 399, emoji: '🎧', specs: 'Premium ANC • 30H Battery • Wireless' },
+    { id: 9, name: 'ASUS ROG Gaming Laptop', category: 'Laptop', price: 2199, emoji: '💻', specs: 'RTX 4090 • Intel i9 • 32GB RAM • 4K' },
+    { id: 10, name: 'Samsung Curved Monitor', category: 'Monitor', price: 549, emoji: '🖥️', specs: '49" Ultrawide • 120Hz • Quantum Dot' },
+    { id: 11, name: 'Mechanical Gaming Keyboard', category: 'Accessories', price: 179, emoji: '⌨️', specs: 'RGB Lighting • Cherry MX Switches' },
+    { id: 12, name: 'Logitech MX Master 3S', category: 'Accessories', price: 99, emoji: '🖱️', specs: 'Precision Scrolling • Multi-Device Pairing' }
+];
+
+let cart = JSON.parse(localStorage.getItem('cart')) || [];
+let currentCategory = 'all';
+let searchQuery = '';
+
+// Render Products
+function renderProducts() {
+    const grid = document.getElementById('product-grid');
+    let filteredProducts = products;
+
+    if (currentCategory !== 'all') {
+        filteredProducts = filteredProducts.filter(p => p.category === currentCategory);
+    }
+
+    if (searchQuery) {
+        filteredProducts = filteredProducts.filter(p =>
+            p.name.toLowerCase().includes(searchQuery.toLowerCase())
+        );
+    }
+
+    if (filteredProducts.length === 0) {
+        grid.innerHTML = '<p style="text-align: center; grid-column: 1/-1;">No products found</p>';
+        return;
+    }
+
+    grid.innerHTML = filteredProducts.map(product => `
+        <div class="product-card">
+            <div class="product-image">${product.emoji}</div>
+            <div class="product-info">
+                <h3>${product.name}</h3>
+                <div class="category-label">${product.category}</div>
+                <div class="specs">${product.specs}</div>
+                <div class="price">$${product.price}</div>
+                <button class="add-btn" onclick="addToCart(${product.id})">Add to Cart</button>
+            </div>
+        </div>
+    `).join('');
+}
+
+// Add to Cart
+function addToCart(productId) {
+    const product = products.find(p => p.id === productId);
+    const existingItem = cart.find(item => item.id === productId);
+
+    if (existingItem) {
+        existingItem.quantity++;
+    } else {
+        cart.push({ ...product, quantity: 1 });
+    }
+
+    localStorage.setItem('cart', JSON.stringify(cart));
+    updateCart();
+    alert(`${product.name} added to cart!`);
+}
+
+// Update Cart Display
+function updateCart() {
+    const cartCount = document.getElementById('cart-count');
+    const cartContent = document.getElementById('cart-content');
+    const cartTotal = document.getElementById('cart-total');
+
+    const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+    cartCount.textContent = totalItems;
+
+    if (cart.length === 0) {
+        cartContent.innerHTML = '<p>Your cart is empty</p>';
+        cartTotal.innerHTML = '<span>Total:</span><span>$0</span>';
+        return;
+    }
+
+    const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+
+    cartContent.innerHTML = cart.map(item => `
+        <div class="cart-item">
+            <div class="cart-item-image">${item.emoji}</div>
+            <div class="cart-item-details">
+                <div class="cart-item-name">${item.name}</div>
+                <div class="cart-item-price">$${item.price} x ${item.quantity}</div>
+                <button class="remove-btn" onclick="removeFromCart(${item.id})">Remove</button>
+            </div>
+        </div>
+    `).join('');
+
+    cartTotal.innerHTML = `<span>Total:</span><span>$${total}</span>`;
+}
+
+// Remove from Cart
+function removeFromCart(productId) {
+    cart = cart.filter(item => item.id !== productId);
+    localStorage.setItem('cart', JSON.stringify(cart));
+    updateCart();
+}
+
+// Toggle Cart Panel
+function toggleCart() {
+    const cartPanel = document.getElementById('cart-panel');
+    cartPanel.classList.toggle('active');
+}
+
+// Filter by Category
+function filterByCategory(category) {
+    currentCategory = category;
+    document.querySelectorAll('.category-btn').forEach(btn => btn.classList.remove('active'));
+    event.target.classList.add('active');
+    renderProducts();
+}
+
+// Search Products
+function filterProducts() {
+    searchQuery = document.getElementById('searchInput').value;
+    renderProducts();
+}
+
+// Navigation Functions
+function showProducts() {
+    document.getElementById('products-section').style.display = 'block';
+    document.getElementById('contact-section').style.display = 'none';
+    currentCategory = 'all';
+    document.querySelectorAll('.category-btn')[0].classList.add('active');
+    renderProducts();
+}
+
+function showContact() {
+    document.getElementById('products-section').style.display = 'none';
+    document.getElementById('contact-section').style.display = 'block';
+}
+
+function showAbout() {
+    alert('Steve Tech Hub - Premium Digital Gadgets Store\n\nDirector: STEVE MUGI\n\nPhone: +254 101 076 275\nEmail: stevodedrummer@gmail.com\n\nWelcome to the best tech store online!');
+}
+
+// Scroll to Products
+function scrollToProducts() {
+    document.getElementById('products-section').scrollIntoView({ behavior: 'smooth' });
+}
+
+// Checkout
+function checkout() {
+    if (cart.length === 0) {
+        alert('Your cart is empty!');
+        return;
+    }
+    const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+    alert(`Order Total: $${total}\n\nThank you for your purchase!\n\nContact us:\n📞 +254 101 076 275\n✉️ stevodedrummer@gmail.com`);
+    cart = [];
+    localStorage.setItem('cart', JSON.stringify(cart));
+    updateCart();
+    toggleCart();
+}
+
+// Contact Modal
+function closeContactModal() {
+    document.getElementById('contact-modal').classList.remove('active');
+}
+
+function sendMessage(event) {
+    event.preventDefault();
+    alert('Message sent! We will contact you soon.\n\nContact us directly:\n📞 +254 101 076 275\n✉️ stevodedrummer@gmail.com');
+    closeContactModal();
+    event.target.reset();
+}
+
+// Initialize
+document.addEventListener('DOMContentLoaded', () => {
+    renderProducts();
+    updateCart();
+});
+</script>
+
+</body>
+</html>
